@@ -6,15 +6,13 @@
 #===============================================================================
 
 fzf_cmd() {
-    fzf-tmux -d 35% --multi --exit-0 --cycle --reverse --bind='ctrl-r:toggle-all' --bind='ctrl-s:toggle-sort' --no-preview
+    fzf-tmux -d 35% --multi --exit-0 --cycle --reverse --bind='ctrl-a:toggle-all' --no-preview
 }
 
 if  hash xdg-open &>/dev/null; then
     open_cmd='nohup xdg-open'
 elif hash open &>/dev/null; then
     open_cmd='open'
-elif [[ -v BROWSER ]]; then
-    open_cmd="$BROWSER"
 fi
 
 content="$(tmux capture-pane -J -p)"
